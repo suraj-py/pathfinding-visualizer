@@ -400,7 +400,7 @@ export default class PathfindingVisualizer extends Component {
           <a className="navbar-brand" href="/">
             <b>PathFinding Visualizer</b>
           </a>
-          <button
+          {/* <button
             className="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -409,8 +409,8 @@ export default class PathfindingVisualizer extends Component {
             aria-expanded="false"
             aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
+          </button> */}
+          {/* <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
                 <a
@@ -426,7 +426,7 @@ export default class PathfindingVisualizer extends Component {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </nav>
 
         <table
