@@ -27,7 +27,6 @@ export default class PathfindingVisualizer extends Component {
       isWallNode: false, // xxxxxxx
       currRow: 0,
       currCol: 0,
-      isDesktopView: true,
     };
 
     this.handleMouseDown = this.handleMouseDown.bind(this);
@@ -44,36 +43,7 @@ export default class PathfindingVisualizer extends Component {
     this.setState({isRunning: !this.state.isRunning});
   }
 
-  toggleView() {
-    if (!this.state.isRunning) {
-      this.clearGrid();
-      this.clearWalls();
-      const isDesktopView = !this.state.isDesktopView;
-      let grid;
-      if (isDesktopView) {
-        grid = this.getInitialGrid(
-          this.state.ROW_COUNT,
-          this.state.COLUMN_COUNT,
-        );
-        this.setState({isDesktopView, grid});
-      } else {
-        if (
-          this.state.START_NODE_ROW > this.state.MOBILE_ROW_COUNT ||
-          this.state.FINISH_NODE_ROW > this.state.MOBILE_ROW_COUNT ||
-          this.state.START_NODE_COL > this.state.MOBILE_COLUMN_COUNT ||
-          this.state.FINISH_NODE_COL > this.state.MOBILE_COLUMN_COUNT
-        ) {
-          alert('Start & Finish Nodes Must Be within 10 Rows x 20 Columns');
-        } else {
-          grid = this.getInitialGrid(
-            this.state.MOBILE_ROW_COUNT,
-            this.state.MOBILE_COLUMN_COUNT,
-          );
-          this.setState({isDesktopView, grid});
-        }
-      }
-    }
-  }
+ 
 
   /******************** Set up the initial grid ********************/
   getInitialGrid = (
@@ -400,33 +370,6 @@ export default class PathfindingVisualizer extends Component {
           <a className="navbar-brand" href="/">
             <b>PathFinding Visualizer</b>
           </a>
-          {/* <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button> */}
-          {/* <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  href="http://www.github.com/PrudhviGNV/pathFinderVisualizer">
-                  {' '}
-                  PathFinder Visualizer code{' '}
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="https://prudhvignv.github.io">
-                  Check Out Other Cool Projects
-                </a>
-              </li>
-            </ul>
-          </div> */}
         </nav>
 
         <table
@@ -497,21 +440,7 @@ export default class PathfindingVisualizer extends Component {
           onClick={() => this.visualize('DFS')}>
           Depth First Search
         </button>
-        {this.state.isDesktopView ? (
-          <button
-            type="button"
-            className="btn btn-light"
-            onClick={() => this.toggleView()}>
-            Mobile View
-          </button>
-        ) : (
-          <button
-            type="button"
-            className="btn btn-dark"
-            onClick={() => this.toggleView()}>
-            Desktop View
-          </button>
-        )}
+       
       </div>
     );
   }
